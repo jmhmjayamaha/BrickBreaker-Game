@@ -9,7 +9,7 @@ public class Main {
 		JFrame obj = new JFrame();
 		PlayGame playGame = new PlayGame();
 		obj.setBounds(10,10,700,600);
-		obj.setTitle("Harshana's BrickBreake Game");
+		obj.setTitle("Harshana's BrickBreak Game");
 		obj.setVisible(true);
 		obj.setResizable(false);
 		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

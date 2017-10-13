@@ -25,7 +25,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 	
 	private int playerX = 310;
 	
-	private int ballX = 120;
+	private int ballX = 170;
 	private int ballY = 310;
 	private int ballXDir = -1;
 	private int ballYDir = -2;
@@ -71,10 +71,10 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 			ballYDir = 0;
 			g.setColor(Color.RED);
 			g.setFont(new Font("Arial", Font.BOLD, 25));
-			g.drawString("You Won",190, 300);
+			g.drawString("You Won",230, 300);
 			
 			g.setFont(new Font("Arial", Font.BOLD, 20));
-			g.drawString("Press enter to return", 190, 350);
+			g.drawString("Press enter to return", 210, 350);
 		}
 		
 		if(ballY > 570) {
@@ -86,7 +86,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 			g.drawString("Game over, Score : " + score	, 190, 300);
 			
 			g.setFont(new Font("Arial", Font.BOLD, 20));
-			g.drawString("Press enter to return", 190, 350);
+			g.drawString("Press enter to return", 210, 350);
 		}
 		
 		g.dispose();
@@ -100,7 +100,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 				ballYDir = -ballYDir;
 			}
 			
-			A : for(int i = 0 ; i < mapGenerator.map.length;i++) {
+			LoopA : for(int i = 0 ; i < mapGenerator.map.length;i++) {
 				for(int j = 0; j < mapGenerator.map[0].length;j++) {
 					if(mapGenerator.map[i][j] > 0) {
 						int brickX = j * mapGenerator.brickWidth + 80;
@@ -123,14 +123,14 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 								ballYDir = -ballYDir;
 							}
 							
-							break A;
+							break LoopA;
 						}
 					}
 				}
 			}
 			
-			ballX += ballXDir;
-			ballY += ballYDir;
+			ballX -= ballXDir;
+			ballY -= ballYDir;
 			if(ballX < 0) {
 				ballXDir = -ballXDir;
 			}
@@ -186,6 +186,11 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 				repaint();
 			}
 		}
+		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			if(play) {
+				pause();
+			}
+		}
 	}
 	
 	public void moveRight() {
@@ -196,6 +201,10 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 	public void moveLeft() {
 		play = true;
 		playerX -= 20;
+	}
+	
+	public void pause(){
+		play = false;
 	}
 
 }
