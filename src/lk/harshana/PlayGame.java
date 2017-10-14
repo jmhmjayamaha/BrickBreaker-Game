@@ -25,7 +25,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 	
 	private int playerX = 310;
 	
-	private int ballX = 170;
+	private int ballX = 200;
 	private int ballY = 310;
 	private int ballXDir = -1;
 	private int ballYDir = -2;
@@ -71,7 +71,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 			ballYDir = 0;
 			g.setColor(Color.RED);
 			g.setFont(new Font("Arial", Font.BOLD, 25));
-			g.drawString("You Won",230, 300);
+			g.drawString("You Won",250, 300);
 			
 			g.setFont(new Font("Arial", Font.BOLD, 20));
 			g.drawString("Press enter to return", 210, 350);
@@ -115,7 +115,7 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 						if(ballRect.intersects(brickRect)) {
 							mapGenerator.setBrickValue(i, j, 0);
 							totalBricks--;
-							score += 5;
+							score(j);
 							
 							if(ballX +19 <= brickRect.x || ballX + 1 >= brickRect.x + brickRect.width ) {
 								ballXDir = -ballXDir;
@@ -207,4 +207,11 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 		play = false;
 	}
 
+	public void score(int j) {
+		if(j % 2 == 0) {
+			score += 5;
+		} else {
+			score += 10;
+		}
+	}
 }
