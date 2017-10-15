@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -57,9 +58,11 @@ public class PlayGame extends JPanel implements KeyListener, ActionListener {
 		g.setColor(Color.green);
 		g.fillRect(playerX, 550, 100, 8);
 		
+		//ball
 		g.setColor(Color.yellow);
+		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.fillOval(ballX, ballY, 20, 20);
-		
+	
 		//score
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial", Font.BOLD, 25));
